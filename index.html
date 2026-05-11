@@ -51,19 +51,38 @@
     overflow-x:hidden;
   }
 
-  /* ── Background ── */
-  .bg-wrapper {
-    position:fixed; inset:0; z-index:0; overflow:hidden;
+  /* ── Ambient Background ── */
+  .bg-ambient {
+    position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
   }
-  .bg-image {
-    position:absolute; inset:-40px;
-    background:url(bg-packaging.jpg) center/cover no-repeat;
-    filter:blur(12px) brightness(0.25);
-    transform:scale(1.05);
+  .bg-orb {
+    position:absolute; border-radius:50%; filter:blur(140px); opacity:0.14;
   }
-  .bg-overlay {
-    position:absolute; inset:0;
-    background:radial-gradient(ellipse 70% 50% at 50% 35%, transparent 40%, var(--bg-deep) 100%);
+  .bg-orb--top {
+    width:min(600px, 80vw); height:min(600px, 80vw);
+    background:var(--accent-cyan);
+    top:-200px; left:50%; transform:translateX(-50%);
+  }
+  .bg-orb--mid {
+    width:min(360px, 55vw); height:min(360px, 55vw);
+    background:var(--accent-blue);
+    top:58%; right:-80px; opacity:0.10;
+  }
+  .bg-orb--bottom {
+    width:min(440px, 60vw); height:min(440px, 60vw);
+    background:var(--accent-magenta);
+    bottom:-200px; left:-100px; opacity:0.09;
+  }
+
+  /* Grid overlay */
+  .bg-grid {
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 70% 55% at 50% 15%, black 25%, transparent 65%);
+    -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 15%, black 25%, transparent 65%);
   }
 
   /* ── Navbar ── */
@@ -336,11 +355,12 @@
 </head>
 <body>
 
-<!-- Background -->
-<div class="bg-wrapper" aria-hidden="true">
-  <div class="bg-image"></div>
-  <div class="bg-overlay"></div>
+<div class="bg-ambient" aria-hidden="true">
+  <div class="bg-orb bg-orb--top"></div>
+  <div class="bg-orb bg-orb--mid"></div>
+  <div class="bg-orb bg-orb--bottom"></div>
 </div>
+<div class="bg-grid" aria-hidden="true"></div>
 
 <!-- Navbar -->
 <nav class="navbar">
