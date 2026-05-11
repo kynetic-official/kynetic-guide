@@ -168,49 +168,15 @@
   .video-embed {
     position:relative; width:100%; padding-top:56.25%;
     background:#000;
-    cursor:pointer;
   }
   .video-embed iframe {
     position:absolute; inset:0;
     width:100%; height:100%; border:none;
   }
 
-  /* YouTube thumbnail overlay (click to load) */
-  .yt-thumb {
+  .video-embed iframe {
     position:absolute; inset:0;
-    background-size:cover; background-position:center;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .yt-thumb::after {
-    content:'';
-    position:absolute; inset:0;
-    background:rgba(0,0,0,0.25);
-    transition:background 0.3s var(--ease-expo);
-  }
-  .video-embed:hover .yt-thumb::after {
-    background:rgba(0,0,0,0.15);
-  }
-  .yt-play-btn {
-    position:relative; z-index:1;
-    width:60px; height:60px;
-    border-radius:50%;
-    background:rgba(0,196,212,0.18);
-    border:2px solid rgba(0,196,212,0.5);
-    display:flex; align-items:center; justify-content:center;
-    transition:background 0.3s var(--ease-expo), transform 0.3s var(--ease-expo);
-  }
-  .video-embed:hover .yt-play-btn {
-    background:rgba(0,196,212,0.30);
-    transform:scale(1.08);
-  }
-  .yt-play-btn::before {
-    content:'';
-    display:block;
-    width:0; height:0;
-    border-style:solid;
-    border-width:10px 0 10px 18px;
-    border-color:transparent transparent transparent var(--accent-cyan);
-    margin-left:4px;
+    width:100%; height:100%; border:none;
   }
 
   .video-info {
@@ -376,10 +342,13 @@
 
     <!-- Video 1: First Film -->
     <article class="video-card">
-      <div class="video-embed" data-video-id="rDHS8D-JbBw">
-        <div class="yt-thumb" style="background-image:url(https://img.youtube.com/vi/rDHS8D-JbBw/hqdefault.jpg)">
-          <div class="yt-play-btn"></div>
-        </div>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/rDHS8D-JbBw?rel=0&modestbranding=1"
+          title="How to use the auxiliary installation tool"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowfullscreen
+        ></iframe>
       </div>
       <div class="video-info">
         <span class="video-step">1</span>
@@ -392,10 +361,13 @@
 
     <!-- Video 2: Second Film -->
     <article class="video-card">
-      <div class="video-embed" data-video-id="i_K7Ak9HnUU">
-        <div class="yt-thumb" style="background-image:url(https://img.youtube.com/vi/i_K7Ak9HnUU/hqdefault.jpg)">
-          <div class="yt-play-btn"></div>
-        </div>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/i_K7Ak9HnUU?rel=0&modestbranding=1"
+          title="Install the second protective film on the dust removal tray"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowfullscreen
+        ></iframe>
       </div>
       <div class="video-info">
         <span class="video-step">2</span>
@@ -408,10 +380,13 @@
 
     <!-- Video 3: Common Issues -->
     <article class="video-card">
-      <div class="video-embed" data-video-id="qOFkcZYWbQ4">
-        <div class="yt-thumb" style="background-image:url(https://img.youtube.com/vi/qOFkcZYWbQ4/hqdefault.jpg)">
-          <div class="yt-play-btn"></div>
-        </div>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/qOFkcZYWbQ4?rel=0&modestbranding=1"
+          title="How to Fix Common Issues When Applying Screen Protectors"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowfullscreen
+        ></iframe>
       </div>
       <div class="video-info">
         <span class="video-step">3</span>
@@ -465,29 +440,6 @@
   </footer>
 
 </main>
-
-<script>
-(function(){
-  'use strict';
-  var embeds = document.querySelectorAll('.video-embed');
-  embeds.forEach(function(container){
-    container.addEventListener('click', function(){
-      var vid = this.getAttribute('data-video-id');
-      if (!vid) return;
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube.com/embed/' + vid + '?rel=0&modestbranding=1&autoplay=1';
-      iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen');
-      iframe.setAttribute('allowfullscreen','true');
-      iframe.setAttribute('title','Video player');
-      iframe.loading = 'eager';
-      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
-      this.innerHTML = '';
-      this.appendChild(iframe);
-      this.style.cursor = 'default';
-    });
-  });
-})();
-</script>
 
 </body>
 </html>
