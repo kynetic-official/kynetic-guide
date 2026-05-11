@@ -377,7 +377,7 @@
     <!-- Video 1: First Film -->
     <article class="video-card">
       <div class="video-embed" data-video-id="rDHS8D-JbBw">
-        <div class="yt-thumb" style="background-image:url(https://img.youtube.com/vi/rDHS8D-JbBw/maxresdefault.jpg)">
+        <div class="yt-thumb" style="background-image:url(https://img.youtube.com/vi/rDHS8D-JbBw/hqdefault.jpg)">
           <div class="yt-play-btn"></div>
         </div>
       </div>
@@ -393,7 +393,7 @@
     <!-- Video 2: Second Film -->
     <article class="video-card">
       <div class="video-embed" data-video-id="i_K7Ak9HnUU">
-        <div class="yt-thumb" style="background-image:url(https://img.youtube.com/vi/i_K7Ak9HnUU/maxresdefault.jpg)">
+        <div class="yt-thumb" style="background-image:url(https://img.youtube.com/vi/i_K7Ak9HnUU/hqdefault.jpg)">
           <div class="yt-play-btn"></div>
         </div>
       </div>
@@ -409,7 +409,7 @@
     <!-- Video 3: Common Issues -->
     <article class="video-card">
       <div class="video-embed" data-video-id="qOFkcZYWbQ4">
-        <div class="yt-thumb" style="background-image:url(https://img.youtube.com/vi/qOFkcZYWbQ4/maxresdefault.jpg)">
+        <div class="yt-thumb" style="background-image:url(https://img.youtube.com/vi/qOFkcZYWbQ4/hqdefault.jpg)">
           <div class="yt-play-btn"></div>
         </div>
       </div>
@@ -475,10 +475,11 @@
       var vid = this.getAttribute('data-video-id');
       if (!vid) return;
       var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?rel=0&modestbranding=1&autoplay=1';
-      iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-      iframe.setAttribute('allowfullscreen','');
+      iframe.src = 'https://www.youtube.com/embed/' + vid + '?rel=0&modestbranding=1&autoplay=1';
+      iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen');
+      iframe.setAttribute('allowfullscreen','true');
       iframe.setAttribute('title','Video player');
+      iframe.loading = 'eager';
       iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
       this.innerHTML = '';
       this.appendChild(iframe);
