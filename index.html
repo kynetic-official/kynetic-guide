@@ -85,6 +85,46 @@
     -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 15%, black 25%, transparent 65%);
   }
 
+  /* ── Navbar ── */
+  .navbar {
+    position:sticky; top:0; z-index:100;
+    background:rgba(10,10,16,0.85);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border-subtle);
+  }
+  .navbar-inner {
+    max-width:720px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px var(--space-sm);
+  }
+  .navbar-logo img { height:26px; width:auto; }
+  .navbar-title {
+    font-size:11px; font-weight:600;
+    color:var(--text-secondary);
+    text-transform:uppercase; letter-spacing:0.06em;
+  }
+  .navbar-btn {
+    display:inline-flex; align-items:center; gap:6px;
+    padding:7px 14px;
+    background:rgba(0,196,212,0.12);
+    border:1px solid rgba(0,196,212,0.25);
+    border-radius:100px;
+    color:var(--accent-cyan);
+    font-size:11px; font-weight:600;
+    text-decoration:none;
+    transition:background 0.25s var(--ease-expo), border-color 0.25s var(--ease-expo);
+  }
+  .navbar-btn:hover {
+    background:rgba(0,196,212,0.20);
+    border-color:rgba(0,196,212,0.45);
+  }
+  .navbar-btn-emoji { font-size:13px; }
+
+  @media (max-width:480px) {
+    .navbar-title { display:none; }
+  }
+
   /* ── Page Container ── */
   .page {
     position:relative; z-index:1;
@@ -324,6 +364,17 @@
 </div>
 <div class="bg-grid" aria-hidden="true"></div>
 
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <span class="navbar-logo"><img src="logo-kynetic.png" alt="Kynetic"></span>
+    <span class="navbar-title">Installation Guide</span>
+    <a href="#support" class="navbar-btn">
+      <span class="navbar-btn-emoji">📲</span> Having Trouble?
+    </a>
+  </div>
+</nav>
+
 <main class="page">
 
   <!-- ===== HEADER ===== -->
@@ -395,7 +446,7 @@
   </div>
 
   <!-- ===== SUPPORT ===== -->
-  <div class="section-label">Customer Support</div>
+  <div class="section-label" id="support">Customer Support</div>
   <section class="support-section" aria-labelledby="support-heading">
     <div class="support-icon-circle" aria-hidden="true">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z"/></svg>
