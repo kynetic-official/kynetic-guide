@@ -51,38 +51,42 @@
     overflow-x:hidden;
   }
 
-  /* ── Ambient Background ── */
-  .bg-ambient {
-    position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
+  /* ── Logo Background ── */
+  .bg-logo-wrapper {
+    position:fixed; inset:0; z-index:0; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
   }
-  .bg-orb {
-    position:absolute; border-radius:50%; filter:blur(140px); opacity:0.14;
+  .bg-logo-giant {
+    position:absolute;
+    width:min(1200px, 180vw);
+    height:min(1200px, 180vw);
+    background:url(logo-kynetic.png) center/contain no-repeat;
+    opacity:0.08;
+    filter:blur(0.5px) brightness(2.2) contrast(1.1);
+    animation:logoGlow 8s ease-in-out infinite alternate;
   }
-  .bg-orb--top {
-    width:min(600px, 80vw); height:min(600px, 80vw);
-    background:var(--accent-cyan);
-    top:-200px; left:50%; transform:translateX(-50%);
+  .bg-logo-aura {
+    position:absolute;
+    width:min(1400px, 200vw);
+    height:min(1400px, 200vw);
+    background:url(logo-kynetic.png) center/contain no-repeat;
+    opacity:0.04;
+    filter:blur(18px) brightness(3);
+    animation:logoGlow 8s ease-in-out 2s infinite alternate;
   }
-  .bg-orb--mid {
-    width:min(360px, 55vw); height:min(360px, 55vw);
-    background:var(--accent-blue);
-    top:58%; right:-80px; opacity:0.10;
-  }
-  .bg-orb--bottom {
-    width:min(440px, 60vw); height:min(440px, 60vw);
-    background:var(--accent-magenta);
-    bottom:-200px; left:-100px; opacity:0.09;
+  .bg-logo-blur {
+    position:absolute;
+    width:min(1000px, 160vw);
+    height:min(1000px, 160vw);
+    background:url(logo-kynetic.png) center/contain no-repeat;
+    opacity:0.025;
+    filter:blur(0.5px) brightness(2.5) contrast(1.2);
+    transform:scale(1.15);
   }
 
-  /* Grid overlay */
-  .bg-grid {
-    position:fixed; inset:0; pointer-events:none; z-index:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-    background-size:64px 64px;
-    mask-image:radial-gradient(ellipse 70% 55% at 50% 15%, black 25%, transparent 65%);
-    -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 15%, black 25%, transparent 65%);
+  @keyframes logoGlow {
+    0%   { filter:blur(0.5px) brightness(1.8) contrast(1.1); }
+    100% { filter:blur(0.5px) brightness(2.6) contrast(1.1); }
   }
 
   /* ── Navbar ── */
@@ -355,12 +359,11 @@
 </head>
 <body>
 
-<div class="bg-ambient" aria-hidden="true">
-  <div class="bg-orb bg-orb--top"></div>
-  <div class="bg-orb bg-orb--mid"></div>
-  <div class="bg-orb bg-orb--bottom"></div>
+<div class="bg-logo-wrapper" aria-hidden="true">
+  <div class="bg-logo-aura"></div>
+  <div class="bg-logo-blur"></div>
+  <div class="bg-logo-giant"></div>
 </div>
-<div class="bg-grid" aria-hidden="true"></div>
 
 <!-- Navbar -->
 <nav class="navbar">
