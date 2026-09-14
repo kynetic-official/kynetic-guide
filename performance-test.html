@@ -48,46 +48,10 @@
     overflow-x:hidden;
   }
 
-  /* ── Ambient Background ── */
-  .bg-ambient {
-    position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
-  }
-  .bg-orb {
-    position:absolute; border-radius:50%; filter:blur(140px); opacity:0.14;
-  }
-  .bg-orb--top {
-    width:min(600px, 80vw); height:min(600px, 80vw);
-    background:var(--accent-cyan);
-    top:-200px; left:50%; transform:translateX(-50%);
-  }
-  .bg-orb--mid {
-    width:min(360px, 55vw); height:min(360px, 55vw);
-    background:var(--accent-blue);
-    top:58%; right:-80px; opacity:0.10;
-  }
-  .bg-orb--bottom {
-    width:min(440px, 60vw); height:min(440px, 60vw);
-    background:var(--accent-magenta);
-    bottom:-200px; left:-100px; opacity:0.09;
-  }
-
-  /* Grid overlay */
-  .bg-grid {
-    position:fixed; inset:0; pointer-events:none; z-index:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-    background-size:64px 64px;
-    mask-image:radial-gradient(ellipse 70% 55% at 50% 15%, black 25%, transparent 65%);
-    -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 15%, black 25%, transparent 65%);
-  }
-
   /* ── Navbar ── */
   .navbar {
     position:sticky; top:0; z-index:100;
-    background:rgba(10,10,16,0.85);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
+    background:rgba(10,10,16,0.96);
     border-bottom:1px solid var(--border-subtle);
   }
   .navbar-inner {
@@ -132,7 +96,6 @@
   .header {
     text-align:center;
     padding:var(--space-xl) 0 var(--space-lg);
-    animation:fadeInUp 0.7s var(--ease-expo) both;
   }
   .header-logo { display:inline-block; margin-bottom:var(--space-md); }
   .header-logo img { height:42px; width:auto; }
@@ -187,11 +150,9 @@
     transition:border-color 0.35s var(--ease-expo),
                box-shadow 0.35s var(--ease-expo),
                transform 0.35s var(--ease-expo);
-    animation:fadeInUp 0.6s var(--ease-expo) both;
+    content-visibility:auto;
+    contain-intrinsic-size:420px;
   }
-  .video-card:nth-child(1) { animation-delay:0.12s; }
-  .video-card:nth-child(2) { animation-delay:0.22s; }
-  .video-card:nth-child(3) { animation-delay:0.32s; }
   .video-card:hover {
     border-color:rgba(0,196,212,0.28);
     box-shadow:0 0 48px var(--accent-glow), 0 6px 28px rgba(0,0,0,0.5);
@@ -284,8 +245,9 @@
     border-radius:var(--radius-lg);
     padding:var(--space-lg) var(--space-md);
     text-align:center;
-    animation:fadeInUp 0.6s var(--ease-expo) 0.42s both;
     position:relative; overflow:hidden;
+    content-visibility:auto;
+    contain-intrinsic-size:320px;
   }
   .support-section::before {
     content:'';
@@ -358,17 +320,10 @@
   /* ── Footer ── */
   .footer {
     text-align:center; padding-top:var(--space-lg);
-    animation:fadeInUp 0.6s var(--ease-expo) 0.52s both;
   }
   .footer-logo { height:20px; width:auto; opacity:0.4; }
   .footer-text {
     font-size:11px; color:var(--text-muted); margin-top:6px;
-  }
-
-  /* ── Animations ── */
-  @keyframes fadeInUp {
-    from { opacity:0; transform:translateY(22px); }
-    to   { opacity:1; transform:translateY(0); }
   }
 
   /* ── Responsive ── */
@@ -389,13 +344,6 @@
 </style>
 </head>
 <body>
-
-<div class="bg-ambient" aria-hidden="true">
-  <div class="bg-orb bg-orb--top"></div>
-  <div class="bg-orb bg-orb--mid"></div>
-  <div class="bg-orb bg-orb--bottom"></div>
-</div>
-<div class="bg-grid" aria-hidden="true"></div>
 
 <!-- Navbar -->
 <nav class="navbar">
